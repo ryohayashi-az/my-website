@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林旅羽税理士事務所 | 〜挑戦に、自由を〜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #001f3f;
+            --accent-gold: #b2945e;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --bg-white: #ffffff;
+            --bg-gray: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif JP', serif; color: var(--text-main); line-height: 1.8; background-color: var(--bg-white); }
+        a { text-decoration: none; transition: 0.3s; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; position: fixed; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.3rem; font-weight: 700; color: var(--primary-navy); letter-spacing: 0.1em; }
+        nav ul { display: flex; gap: 25px; list-style: none; }
+        nav ul li a { font-size: 0.85rem; color: var(--primary-navy); font-weight: 600; }
+
+        .hero {
+            height: 70vh; display: flex; align-items: center; justify-content: center;
+            position: relative; background-color: var(--primary-navy);
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0, 31, 63, 0.6), rgba(0, 31, 63, 0.6)), 
+                        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1920&q=80') center/cover;
+        }
+        .hero-content { position: relative; text-align: center; color: #fff; padding: 0 20px; }
+        .hero-content .vision { font-size: 1.2rem; letter-spacing: 0.3em; margin-bottom: 20px; color: var(--accent-gold); }
+        .hero-content h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; letter-spacing: 0.15em; }
+
+        .section { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2rem; color: var(--primary-navy); display: inline-block; border-bottom: 2px solid var(--accent-gold); padding-bottom: 10px; }
+
+        /* 代表紹介セクション */
+        .profile-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: flex-start; }
+        
+        .profile-image-box { 
+            width: 100%; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+        }
+        .profile-image-box img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            object-fit: cover;
+        }
+
+        .profile-text h2 { font-size: 1.8rem; color: var(--primary-navy); margin-bottom: 5px; }
+        .profile-text .name-en { font-family: 'Playfair Display', serif; color: var(--accent-gold); font-size: 1.1rem; display: block; margin-bottom: 25px; }
+        .profile-text .intro { font-size: 0.95rem; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
+        
+        .career-list { list-style: none; font-size: 0.9rem; }
+        .career-list li { 
+            margin-bottom: 12px; 
+            padding-left: 1.2em; 
+            position: relative; 
+            text-align: justify;
+        }
+        .career-list li::before { content: "・"; position: absolute; left: 0; color: var(--accent-gold); }
+
+        /* 事務所紹介 */
+        .office-section { background-color: var(--bg-gray); }
+        .office-info { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 4px; border: 1px solid #eee; }
+        .office-info dl { display: grid; grid-template-columns: 150px 1fr; gap: 20px; }
+        .office-info dt { font-weight: 700; color: var(--primary-navy); }
+        .office-info dd { color: var(--text-main); }
+
+        /* サービス */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card { padding: 40px; border: 1px solid #eee; border-top: 4px solid var(--primary-navy); background: #fff; }
+        .service-card h3 { color: var(--primary-navy); margin-bottom: 20px; font-size: 1.2rem; }
+        .service-card ul { list-style: none; font-size: 0.85rem; color: var(--text-sub); }
+        .service-card ul li { margin-bottom: 8px; padding-left: 15px; position: relative; }
+        .service-card ul li::before { content: '・'; position: absolute; left: 0; color: var(--accent-gold); }
+
+        /* お問い合わせ */
+        .contact-section { background-color: var(--primary-navy); color: #fff; padding: 100px 8%; }
+        .contact-container { max-width: 700px; margin: 0 auto; text-align: center; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 4px; }
+        .btn-submit { width: 100%; padding: 20px; background: var(--accent-gold); color: #fff; border: none; font-weight: 700; cursor: pointer; letter-spacing: 0.3em; }
+
+        footer { padding: 40px; text-align: center; font-size: 0.8rem; background: #fff; }
+
+        @media (max-width: 768px) { 
+            .profile-container { grid-template-columns: 1fr; } 
+            nav { display: none; }
+            .office-info dl { grid-template-columns: 1fr; gap: 5px; }
+            .office-info dd { margin-bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">林旅羽税理士事務所</div>
+        <nav>
+            <ul>
+                <li><a href="#about">代表紹介</a></li>
+                <li><a href="#office">事務所紹介</a></li>
+                <li><a href="#services">サービス</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="vision">〜挑戦に、自由を〜</p>
+            <h1>経営の伴走者として、<br>確かな未来を共に描く。</h1>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>代表紹介</h2>
+        </div>
+        <div class="profile-container">
+            <div class="profile-image-box">
+                <img src="profile.png.png" alt="代表 林 旅羽">
+            </div>
+            <div class="profile-text">
+                <h2>林 旅羽</h2>
+                <span class="name-en">Ryo Hayashi</span>
+                <p class="intro">大手監査法人およびFASでの専門的な知見を活かし、経営者の皆様に誠実向き合います。</p>
+                <ul class="career-list">
+                    <li>明治大学商学部卒業</li>
+                    <li>新卒でKPMGあずさ監査法人へ入社。大手上場企業～上場準備企業の監査まで幅広く従事。</li>
+                    <li>退職後、スタートアップのFAS部門にて、DD・Valuation・事業計画作成支援等のアドバイザリー業務に従事。</li>
+                    <li>2025年12月、林旅羽税理士事務所を開業。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="office" class="section office-section">
+        <div class="section-title">
+            <h2>事務所紹介</h2>
+        </div>
+        <div class="office-info">
+            <dl>
+                <dt>事務所名</dt>
+                <dd>林旅羽税理士事務所</dd>
+                <dt>代表者</dt>
+                <dd>林 旅羽（税理士 / 公認会計士）</dd>
+                <dt>所在地</dt>
+                <dd>千葉県市川市</dd>
+                <dt>電話番号</dt>
+                <dd>080-2385-5522</dd>
+                <dt>メールアドレス</dt>
+                <dd>ryo.hayashi1@outlook.jp</dd>
+            </dl>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>提供サービス</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>税務関連業務</h3>
+                <ul>
+                    <li>各種申告書作成（法人税・消費税・所得税）</li>
+                    <li>年末調整・法定調書の作成</li>
+                    <li>税務調査対応・節税対策</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>会計・経理支援業務</h3>
+                <ul>
+                    <li>記帳代行・会計ソフト入力</li>
+                    <li>月次・年次の決算業務</li>
+                    <li>会計ソフトの導入支援</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>経営コンサルティング</h3>
+                <ul>
+                    <li>資金繰り・融資支援</li>
+                    <li>補助金・助成金申請サポート</li>
+                    <li>経営状況の分析・アドバイス</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>その他</h3>
+                <ul>
+                    <li>設立支援業務</li>
+                    <li>給与計算・明細作成</li>
+                    <li>社会保険・労働保険手続支援</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="section-title">
+                <h2 style="color: #fff; border-bottom: none;">Contact</h2>
+                <p style="margin-bottom: 40px; opacity: 0.8;">ご相談、お見積りはこちらから承ります</p>
+            </div>
+            <form action="https://formspree.io/f/ryo.hayashi1@outlook.jp" method="POST">
+                <input type="text" name="name" required placeholder="御社名 / お名前">
+                <input type="email" name="_replyto" required placeholder="メールアドレス">
+                <textarea name="message" rows="6" required placeholder="ご相談内容をご記入ください"></textarea>
+                <button type="submit" class="btn-submit">この内容で送信する</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 林旅羽税理士事務所. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+            });
+        });
+    </script>
+</body>
+</html>
